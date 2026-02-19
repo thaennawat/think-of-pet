@@ -287,6 +287,91 @@
         height: 160px;
       }
     }
+
+    /* Modal Popup Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: #ff6699;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .modal-content h2 {
+      font-family: "Mali", cursive;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .modal-content .modal-price {
+      font-weight: bold;
+      color: #ff6699;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .product-card {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -311,26 +396,26 @@
 
     <div class="product-grid">
       <!-- (สินค้าเหมือนเดิมทั้งหมด) -->
-      <div class="product-card"><span class="sparkle">✨</span><img src="img/11.jpg" alt=""><h3>อ่างอาบน้ำ หมา/แมว</h3><p>ราคา: 1,290 บาท</p></div>
-      <div class="product-card"><span class="sparkle">💖</span><img src="img/13.jpg" alt=""><h3>ที่นอน หมา/แมว</h3><p>ราคา: 590 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🌸</span><img src="img/10.jpg" alt=""><h3>ตู้เสื้อผ้า หมา/แมว</h3><p>ราคา: 890 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐾</span><img src="img/7.jpg" alt=""><h3>เสื้อผ้า หมา/แมว</h3><p>ราคา: 299 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐱</span><img src="img/2.jpg" alt=""><h3>ไม้ตกแมว</h3><p>ราคา: 159 บาท</p></div>
-      <div class="product-card"><span class="sparkle">✨</span><img src="img/4.jpg" alt=""><h3>ยาสีฟัน หมา/แมว</h3><p>ราคา: 180 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🌸</span><img src="img/16.jpg" alt=""><h3>แปรงสีฟัน หมา/แมว</h3><p>ราคา: 120 บาท</p></div>
-      <div class="product-card"><span class="sparkle">💗</span><img src="img/5.jpg" alt=""><h3>บาล์มทาอุ้งเท้า</h3><p>ราคา: 250 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐶</span><img src="img/1.jpg" alt=""><h3>แปรงซิลิโคนอาบน้ำ</h3><p>ราคา: 220 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🌟</span><img src="img/3.jpg" alt=""><h3>กระบะทรายแมว</h3><p>ราคา: 490 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🎀</span><img src="img/6.jpg" alt=""><h3>คอกกั้นในบ้าน</h3><p>ราคา: 1,190 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐾</span><img src="img/8.jpg" alt=""><h3>ถ้วยให้อาหาร</h3><p>ราคา: 150 บาท</p></div>
-      <div class="product-card"><span class="sparkle">💫</span><img src="img/9.jpg" alt=""><h3>ของเล่นหมา</h3><p>ราคา: 199 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🎉</span><img src="img/15.jpg" alt=""><h3>เซ็ตแปรงขนสัตว์</h3><p>ราคา: 499 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐕</span><img src="img/14.jpg" alt=""><h3>สายจูง</h3><p>ราคา: 250 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🎀</span><img src="img/17.jpg" alt=""><h3>ผ้ากันเปื้อนซิลิโคน</h3><p> ราคา: 69 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🌸</span><img src="img/18.jpg" alt=""><h3>กรงน้องหมา แมว พร้อมถาดอาหาร</h3><p>ราคา: 550 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🌟</span><img src="img/19.jpg" alt=""><h3>ปลอกคอน้องหมา น้องแมว</h3><p>ราคา: 35 บาท</p></div>
-      <div class="product-card"><span class="sparkle">🐱</span><img src="img/28.jpg" alt=""><h3>อาหารแมวกระป๋อง</h3><p>ราคา: 39 บาท</p></div>
-       <div class="product-card"><span class="sparkle">🐾</span><img src="img/29.jpg" alt=""><h3>อาหารสุนัข</h3><p>ราคา: 65 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="อ่างอาบน้ำขนาดกว้างขวาง ทำจากวัสดุแข็งแรงทนทาน ช่วยให้การอาบน้ำน้องๆ เป็นเรื่องง่ายและสนุกสนาน"><span class="sparkle">✨</span><img src="img/11.jpg" alt=""><h3>อ่างอาบน้ำ หมา/แมว</h3><p>ราคา: 1,290 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ที่นอนนุ่มสบาย ผลิตจากผ้าคุณภาพดี ระบายอากาศได้ดี ทำให้น้องๆ หลับสบายตลอดคืน"><span class="sparkle">💖</span><img src="img/13.jpg" alt=""><h3>ที่นอน หมา/แมว</h3><p>ราคา: 590 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ตู้เสื้อผ้าดีไซน์น่ารัก สำหรับเก็บชุดโปรดของน้องๆ ให้เป็นระเบียบเรียบร้อย"><span class="sparkle">🌸</span><img src="img/10.jpg" alt=""><h3>ตู้เสื้อผ้า หมา/แมว</h3><p>ราคา: 890 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="เสื้อผ้าแฟชั่นสุดคิวท์ เนื้อผ้านุ่มใส่สบาย ไม่ระคายเคืองผิว มีหลายไซส์ให้เลือก"><span class="sparkle">🐾</span><img src="img/7.jpg" alt=""><h3>เสื้อผ้า หมา/แมว</h3><p>ราคา: 299 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ของเล่นสุดฮิตสำหรับน้องแมว ช่วยฝึกทักษะการล่าเหยื่อและออกกำลังกายไปในตัว"><span class="sparkle">🐱</span><img src="img/2.jpg" alt=""><h3>ไม้ตกแมว</h3><p>ราคา: 159 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ยาสีฟันสูตรเฉพาะสำหรับสัตว์เลี้ยง ช่วยลดคราบหินปูนและกลิ่นปาก ลมหายใจหอมสดชื่น"><span class="sparkle">✨</span><img src="img/4.jpg" alt=""><h3>ยาสีฟัน หมา/แมว</h3><p>ราคา: 180 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="แปรงสีฟันขนมุ่ม ออกแบบมาให้ซอกซอนทำความสะอาดฟันของน้องๆ ได้อย่างทั่วถึง"><span class="sparkle">🌸</span><img src="img/16.jpg" alt=""><h3>แปรงสีฟัน หมา/แมว</h3><p>ราคา: 120 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="บาล์มบำรุงอุ้งเท้าที่แห้งแตก ให้กลับมานุ่มชุ่มชื้น ปลอดภัยหากน้องเลีย"><span class="sparkle">💗</span><img src="img/5.jpg" alt=""><h3>บาล์มทาอุ้งเท้า</h3><p>ราคา: 250 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="แปรงซิลิโคนเนื้อนุ่ม ช่วยนวดผิวและขจัดขนร่วงขณะอาบน้ำ ใช้งานง่ายจับถนัดมือ"><span class="sparkle">🐶</span><img src="img/1.jpg" alt=""><h3>แปรงซิลิโคนอาบน้ำ</h3><p>ราคา: 220 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="กระบะทรายขอบสูง ป้องกันทรายกระเด็น ทำความสะอาดง่าย เหมาะสำหรับแมวทุกสายพันธุ์"><span class="sparkle">🌟</span><img src="img/3.jpg" alt=""><h3>กระบะทรายแมว</h3><p>ราคา: 490 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="คอกกั้นสำหรับจัดโซนให้น้องๆ อยู่เป็นสัดส่วน แข็งแรง ประกอบง่าย ปรับเปลี่ยนรูปทรงได้"><span class="sparkle">🎀</span><img src="img/6.jpg" alt=""><h3>คอกกั้นในบ้าน</h3><p>ราคา: 1,190 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ถ้วยอาหารเซรามิก/พลาสติกเกรด A ล้างทำความสะอาดง่าย ดีไซน์น่ารักน่าใช้"><span class="sparkle">🐾</span><img src="img/8.jpg" alt=""><h3>ถ้วยให้อาหาร</h3><p>ราคา: 150 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ของเล่นยางกัดทนทาน ช่วยขัดฟันและคลายเครียดให้น้องหมาสนุกได้ทั้งวัน"><span class="sparkle">💫</span><img src="img/9.jpg" alt=""><h3>ของเล่นหมา</h3><p>ราคา: 199 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ชุดแปรงขนครบเซ็ต ช่วยสางขนพันกันและกำจัดขนร่วง ให้ขนสวยเงางามสุขภาพดี"><span class="sparkle">🎉</span><img src="img/15.jpg" alt=""><h3>เซ็ตแปรงขนสัตว์</h3><p>ราคา: 499 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="สายจูงแข็งแรงทนทาน ด้ามจับนุ่มมือ ให้คุณพาน้องเดินเล่นได้อย่างมั่นใจและปลอดภัย"><span class="sparkle">🐕</span><img src="img/14.jpg" alt=""><h3>สายจูง</h3><p>ราคา: 250 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ผ้ากันเปื้อนซิลิโคน กันน้ำและคราบอาหาร ล้างออกง่าย ช่วยให้มื้ออาหารไม่เลอะเทอะ"><span class="sparkle">🎀</span><img src="img/17.jpg" alt=""><h3>ผ้ากันเปื้อนซิลิโคน</h3><p> ราคา: 69 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="กรงเหล็กคุณภาพดี พร้อมถาดรองทำความสะอาดง่าย ระบายอากาศได้ดี ไม่อึดอัด"><span class="sparkle">🌸</span><img src="img/18.jpg" alt=""><h3>กรงน้องหมา แมว พร้อมถาดอาหาร</h3><p>ราคา: 550 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="ปลอกคอสีสันสดใส ปรับขนาดได้ พร้อมกระดิ่งกรุ๊งกริ๊ง น่ารักฟรุ้งฟริ้งสุดๆ"><span class="sparkle">🌟</span><img src="img/19.jpg" alt=""><h3>ปลอกคอน้องหมา น้องแมว</h3><p>ราคา: 35 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="อาหารเปียกเกรดพรีเมียม รสชาติอร่อยถูกใจ อุดมด้วยสารอาหารที่จำเป็นต่อแมว"><span class="sparkle">🐱</span><img src="img/28.jpg" alt=""><h3>อาหารแมวกระป๋อง</h3><p>ราคา: 39 บาท</p></div>
+      <div class="product-card" onclick="openModal(this)" data-detail="อาหารเม็ดสูตรโภชนาการครบถ้วน บำรุงขนและผิวหนัง ให้พลังงานเต็มที่ในทุกวัน"><span class="sparkle">🐾</span><img src="img/29.jpg" alt=""><h3>อาหารสุนัข</h3><p>ราคา: 65 บาท</p></div>
     </div> 
   </section>
 
@@ -338,6 +423,48 @@
   <footer>
     <p>© 2025 Think of Pet | ร้านขายอุปกรณ์สัตว์เลี้ยงครบวงจร 💕</p>
   </footer>
+
+  <!-- Modal Structure -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <p id="modalPrice" class="modal-price"></p>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("productModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalText = document.getElementById("modalText");
+
+    function openModal(element) {
+      const img = element.querySelector("img").src;
+      const title = element.querySelector("h3").innerText;
+      const price = element.querySelector("p").innerText;
+      const detail = element.getAttribute("data-detail");
+
+      modalImg.src = img;
+      modalTitle.innerText = title;
+      modalPrice.innerText = price;
+      modalText.innerText = detail;
+
+      modal.classList.add("show");
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
 </body>
 </html>
-
