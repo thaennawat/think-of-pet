@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Think of Pet | ร้านขายอุปกรณ์สัตว์เลี้ยงครบวงจร</title>
+
+  <style>
+    /* 🌈 โทนสีพาสเทล */
+    :root {
+      --main-pink: #ffd6e0;
+      --main-blue: #cde8ff;
+      --main-green: #d4f6d6;
+      --text-color: #333;
+      --accent: #ffb6c1;
+    }
+
+    body {
+      font-family: "Prompt", sans-serif;
+      margin: 0;
+      background-color: #fffafc;
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 🔹 ส่วนหัว */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--main-pink);
+      padding: 10px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* โลโก้และชื่อร้าน */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* เมนูนำทาง */
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff6699;
+      transform: scale(1.1);
+    }
+
+    /* 🔹 แบนเนอร์ */
+    .banner {
+      position: relative;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--main-blue), #fff);
+      padding: 40px 0;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .banner img {
+      width: 60%;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .banner-text {
+      margin-top: 20px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .banner-text h1 {
+      font-size: 2rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .banner-text p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      background-color: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: popIn 1.8s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff85a2;
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.6);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* 🔹 ส่วนสินค้าแนะนำ */
+    .featured {
+      background-color: var(--main-green);
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    .featured h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      width: 260px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) rotate(1deg);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-card h3 {
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .product-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* 🔹 ส่วนท้าย */
+    footer {
+      background-color: var(--main-blue);
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 50px;
+      animation: fadeIn 2s ease;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer li {
+      margin: 8px 0;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ff6699;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      animation: wiggle 3s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+    }
+
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 10px;
+        display: inline-block;
+      }
+
+      .banner img {
+        width: 90%;
+      }
+
+      .product-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🔹 ส่วนหัวเว็บไซต์ -->
+  <header>
+    <div class="logo-container">
+      <img src="logo/1.png" alt="โลโกร้าน">
+      <div class="logo">🐾 Think of Pet</div>
+    </div>
+    <nav>
+  <a href="index.html">หน้าแรก</a>
+      <a href="tips.html">เกร็ดความรู้</a>
+      <a href="products.html">สินค้าทั้งหมด</a>
+      <a href="delivery.html">เดลิเวอรี่ใกล้บ้านคุณ 🚚</a>
+      <a href="contact.html">ติดต่อร้าน</a>
+</nav>
+
+  </header>
+
+  <!-- 🔹 แบนเนอร์หลัก -->
+  <section class="banner">
+    <img src="banner/1.png" alt="แบนเนอร์ร้านสัตว์เลี้ยง">
+    <div class="banner-text">
+      <h1>อุปกรณ์สัตว์เลี้ยงครบวงจร 💕</h1>
+      <p>ของใช้ หมา-แมว คุณภาพดี ราคาคุ้มค่า</p>
+      <a href="products.html" class="btn">ดูสินค้าทั้งหมด</a>
+    </div>
+  </section>
+
+  <!-- 🔹 สินค้าแนะนำ -->
+  <section class="featured">
+    <h2>สินค้าแนะนำ 🛍️</h2>
+    <div class="product-grid">
+      <div class="product-card">
+  <img src="img/13.jpg" alt="ที่นอนหมาแมว">
+  <h3>ที่นอนหมา/แมว พรีเมียม</h3>
+  <p>นุ่มสบาย ซักได้ กันน้ำ</p>
+  <p><strong>ราคา: 590 บาท</strong></p>
+</div>
+
+      <div class="product-card">
+  <img src="img/2.jpg" alt="ของเล่นแมว">
+  <h3>ไม้ตกแมว CatFun</h3>
+  <p>ของเล่นสุดฮิต ปลอดภัยไม่บาดขา</p>
+  <p><strong>ราคา: 159 บาท</strong></p>
+</div>
+
+      <div class="product-card">
+  <img src="img/7.jpg" alt="เสื้อผ้าหมาแมว">
+  <h3>เสื้อผ้าหมา/แมว แฟชั่น</h3>
+  <p>ผ้านุ่ม ระบายอากาศดี</p>
+  <p><strong>ราคา: 299 บาท</strong></p>
+</div>
+    </div>
+  </section>
+
+  <!-- 🔹 ส่วนท้าย -->
+  <footer>
+    <ul>
+      <li><a href="#">© 2025 Think of Pet</a></li>
+      <li><a href="#">โทร. 081-234-5678</a></li>
+      <li><a href="#">LINE: @thinkofpet</a></li>
+      <p>👋</p>
+    </ul>
+  </footer>
+</body>
+</html>

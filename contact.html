@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ติดต่อร้าน | Think of Pet</title>
+  <style>
+    /* 🌈 โทนสีพาสเทล */
+    :root {
+      --main-pink: #ffd6e0;
+      --main-blue: #cde8ff;
+      --main-green: #d4f6d6;
+      --accent: #ffb6c1;
+      --text: #333;
+    }
+
+    body {
+      font-family: "Prompt", sans-serif;
+      margin: 0;
+      background-color: #fffafc;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* 🎀 Header */
+    header {
+      background-color: var(--main-pink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      animation: fadeDown 1s ease;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    nav a:hover {
+      color: #ff6699;
+      transform: scale(1.1);
+    }
+
+    /* 💌 Contact Section */
+    .contact {
+      background: linear-gradient(180deg, var(--main-blue), #fff);
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .contact h2 {
+      font-size: 1.9rem;
+      color: #444;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .contact h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    form {
+      background: linear-gradient(145deg, #ffffff, #fff6f8);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 35px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    form:hover {
+      transform: translateY(-5px);
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-top: 15px;
+      color: #444;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-top: 8px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      background-color: #fdfdfd;
+      transition: border 0.3s, box-shadow 0.3s;
+      font-family: "Prompt", sans-serif;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border: 1px solid #ffb6c1;
+      box-shadow: 0 0 6px #ffb6c1;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-size: 1.1rem;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff99aa;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(255,150,180,0.4);
+    }
+
+    /* ❗ ปิดข้อความเดิม (ไม่ลบ เพื่อให้ข้อมูลอยู่ครบ) */
+    #successMessage {
+      display: none;
+    }
+
+    /* --------------------------------------------------- */
+    /* 🟢 POPUP SUCCESS (แบบวงกลมติ๊กถูก) */
+    /* --------------------------------------------------- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 40px;
+      width: 300px;
+      border-radius: 25px;
+      text-align: center;
+      animation: fadeUp 0.5s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .circle-check {
+      width: 90px;
+      height: 90px;
+      background: #d4f6d6;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 45px;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    .popup-box h3 {
+      font-size: 1.3rem;
+      margin: 10px 0;
+      color: #444;
+    }
+
+    .popup-box p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .popup-box button {
+      width: 80%;
+      background: var(--accent);
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .popup-box button:hover {
+      background: #ff99aa;
+    }
+
+    /* 🐾 Footer */
+    footer {
+      background-color: var(--main-green);
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 60px;
+      color: #333;
+      animation: fadeUp 1.2s ease;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* ✨ Animation */
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav a {
+        margin: 8px;
+      }
+      form {
+        padding: 25px 20px;
+      }
+      .social-links a {
+        width: 80%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ส่วนหัว -->
+  <header>
+    <div class="logo">🐾 Think of Pet</div>
+    <nav>
+      <a href="index.html">หน้าแรก</a>
+      <a href="tips.html">เกร็ดความรู้</a>
+      <a href="products.html">สินค้าทั้งหมด</a>
+      <a href="delivery.html">เดลิเวอรี่ใกล้บ้านคุณ 🚚</a>
+      <a href="contact.html">ติดต่อร้าน</a>
+    </nav>
+  </header>
+
+  <!-- ฟอร์มติดต่อ -->
+  <section class="contact">
+    <h2>📩 ฟอร์มสอบถามสินค้า</h2>
+
+    <form id="contactForm" action="php/contact-form.php" method="POST">
+      <label>ชื่อ-นามสกุล:</label>
+      <input type="text" name="name" required>
+
+      <label>อีเมล:</label>
+      <input type="email" name="email" required>
+
+      <label>ข้อความ:</label>
+      <textarea name="message" rows="4" required></textarea>
+
+      <button type="submit">ส่งข้อความ</button>
+    </form>
+
+    <!-- ข้อความเดิม (ซ่อนแต่ไม่ลบ เพื่อให้ข้อมูลครบ) -->
+    <p id="successMessage">✅ ส่งข้อความเรียบร้อยแล้ว!</p>
+
+    <!-- ช่องทางติดต่อ -->
+    <div class="social">
+      <h3>📱 ช่องทางติดต่ออื่น ๆ</h3>
+      <div class="social-links">
+        <a href="tel:0812345678">📞 โทร: 081-234-5678</a>
+        <a href="https://line.me/R/ti/p/@thinkofpet">💬 LINE: @thinkofpet</a>
+        <a href="#">📘 Facebook: Think of Pet</a>
+        <a href="#">📷 Instagram: @thinkofpet_shop</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ส่วนท้าย -->
+  <footer>
+    <p>© 2025 Think of Pet</p>
+  </footer>
+
+  <!-- 🔥 POPUP SUCCESS -->
+  <div class="popup-overlay" id="popupSuccess">
+    <div class="popup-box">
+      <div class="circle-check">✔</div>
+      <h3>ส่งข้อความสำเร็จ!</h3>
+      <p>ระบบได้รับข้อความของคุณแล้ว 🎀</p>
+      <button onclick="closePopup()">ตกลง</button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // เปิด Popup เมื่อกดส่งฟอร์ม
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      const popup = document.getElementById("popupSuccess");
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault(); // กันหน้ารีเฟรช
+        popup.style.display = "flex"; // เปิด popup
+        form.reset(); // เคลียร์ฟอร์ม
+      });
+    });
+
+    // ปิด popup
+    function closePopup() {
+      document.getElementById("popupSuccess").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
